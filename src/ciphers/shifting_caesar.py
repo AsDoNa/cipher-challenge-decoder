@@ -1,7 +1,7 @@
-from cipher import Cipher
-from caesar_cipher import Caesar
-from objects import Settings
-from useful import space_by
+from src.ciphers.cipher import Cipher
+from src.ciphers.caesar_cipher import Caesar
+from src.ciphers.objects import Settings
+from src.ciphers.useful import space_by
 
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

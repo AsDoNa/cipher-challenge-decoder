@@ -1,0 +1,45 @@
+/* body {
+    background: radial-gradient(rgba(222, 217, 135, 1),rgba(255, 255, 255,0));
+    margin: 0px;
+    padding: 0px;
+}
+
+.content {
+    position: fixed;
+    top: 2.5%;
+    left: 2.5%;
+    height: 95%;
+    width: 95%;
+    background-color: rgb(255, 219, 89);
+}
+
+.cipher-name-header {
+    font-size: 40px;
+    font-family:Arial, Helvetica, sans-serif;
+    
+} */
+body {
+    background: radial-gradient(rgba(222, 217, 135, 1), rgba(255, 255, 255, 0));
+    margin: 0px;
+    padding: 0px;
+}
+
+.content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), rgb(255, 219, 89);
+}
+
+.cipher-name-header {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#result-para {
+    width: 90%;
+    margin: 5%;
+    overflow-wrap: break-word;
+}

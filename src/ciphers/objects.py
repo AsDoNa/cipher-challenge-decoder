@@ -1,10 +1,22 @@
 class Settings():
-    def __init__(self, alphabet=None, alpha_numeric_punctuation=None, min_length=None, max_length=None):
+    def __init__(self, alphabet:str=None, tight:bool=None, alpha_numeric_punctuation:str=None, min_length:int=None, max_length:int=None):
+        self.tight = tight
         self.min_length = min_length
         self.max_length = max_length
         self.alpha_numeric_punctuation = alpha_numeric_punctuation
         self.alphabet = alphabet
 
+    @property
+    def tight(self):
+        return self._tight
+    
+    @tight.setter
+    def tight(self,new_tight):
+        if new_tight not in [True,False]:
+            raise ValueError("INVALID TIGHTNESS")
+        else:
+            self._tight = new_tight
+    
     @property
     def min_length(self):
         return self._min_length

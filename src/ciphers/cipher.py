@@ -1,6 +1,6 @@
 #from src.resources.consts import get_defaults as get_default_settings
-from src.resources.consts import get_default_settings
-from src.ciphers.objects import Settings
+from resources.consts import get_default_settings
+from ciphers.objects import Settings
 
 MIN_LENGTH = 26 # UPDATE TO WORK WITH IMPORTED CONSTS
 MAX_LENGTH = 26 # UPDATE TO WORK WITH IMPORTED CONSTS
@@ -10,18 +10,30 @@ ACCEPTABLEALPHANUMPUNC = ["a", "an", "anp", "ap", "n"]
 
 class Cipher():
     def __init__(self, settings=get_default_settings()):
-        # self.min_length = settings.min_length
-        # self.max_length = settings.max_length
-        # self.alpha_numeric_punctuation = settings.alpha_numeric_punctuation
-        # self.alphabet = settings.alphabet
-        pass
+        self.tight = settings.tight
+        self.min_length = settings.min_length
+        self.max_length = settings.max_length
+        self.alpha_numeric_punctuation = settings.alpha_numeric_punctuation
+        self.alphabet = settings.alphabet
 
     def get_settings(self):
-        pass
+        return Settings(alphabet=self.alphabet, tight=self.tight, min_length=self.min_length, alpha_numeric_punctuation=self.alpha_numeric_punctuation)
 
     def save_to_history(self, dir, filename):
         pass
 
+    @property
+    def tight(self):
+        return self._tight
+    
+    @tight.setter
+    def tight(self,new_tight):
+        if new_tight not in [True,False]:
+            raise ValueError("INVALID TIGHTNESS")
+        else:
+            self._tight = new_tight
+
+    
     @property
     def min_length(self):
         return self._min_length
