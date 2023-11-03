@@ -1,10 +1,11 @@
 import re
-from progress_bar import update_progress
+from src.resources.progress_bar import update_progress
 import os
 
 MID_SEP = ":"
 END_SEP = ","
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+RUSS_ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
 
 def possible_monograms(dict_or_list:str, alphabet:str=ALPHABET):
     if dict_or_list == "dict":
@@ -14,26 +15,14 @@ def possible_monograms(dict_or_list:str, alphabet:str=ALPHABET):
 
     return monograms
 
-def count_monograms(text:str, order_by_alphabet_or_frequency:str="alphabet", case_insensitive:bool=True, include_spaces:bool=False, include_nums:bool=False, include_punc:bool=False):
-    '''Returns a dictionary of all monograms in the text (filtered according to args) ordered by alphabet or frequency'''
+def count_monograms(text:str, order_by_alphabet_or_frequency:str="alphabet", case_insensitive:bool=True, include_spaces:bool=False, include_nums:bool=False, include_punc:bool=False, percent_or_count:str="percent"):
+    '''Returns a dictionary of all monogram probabilties in the text (filtered according to args) ordered by alphabet or frequency'''
 
     alphabet = ALPHABET
     if include_spaces:
         alphabet += " "
     
-    text = re.sub("\n", " ", text)
-    
-    if case_insensitive:
-        text = text.upper()
-
-    if not include_punc:
-        text = re.sub("[^A-Za-z0-9 ]+", "", text)
-    
-    if not include_nums:
-        text = re.sub("[^A-Za-z ]+", "", text)
-    
-    if not include_spaces:
-        text = re.sub(" ", "", text)
+    text = "".join([char for char in text if char in alphabet])
 
     text = re.sub(r"\s+", " ", text)
 
@@ -51,6 +40,14 @@ def count_monograms(text:str, order_by_alphabet_or_frequency:str="alphabet", cas
             frequencies[char] += 1
         i += 1
         update_progress(i,num_chars)
+
+    if percent_or_count == "percent":
+        for key in frequencies.keys():
+            frequencies[key] /= num_chars
+    elif percent_or_count == "count":
+        pass
+    else:
+        raise ValueError
 
     if order_by_alphabet_or_frequency == "alphabet":
         frequencies = dict(sorted(frequencies.items(), key=lambda x:x[0].replace(" ", "_")))
@@ -88,6 +85,9 @@ def load_monogram_count(directory:str,file:str, mid_sep:str=MID_SEP, end_sep:str
     return monogram_dict
 
 if __name__ == "__main__":
-    count_monograms_file("src/resources", "engcorp.txt", save=True, save_dir="src/resources", save_file="engcorpmonofreqs.txt")
-    count_monograms_file("src/resources", "engcorp.txt", include_spaces=True, save=True, save_dir="src/resources", save_file="engcorpspacemonofreqs.txt")
+    # count_monograms_file("src/resources", "engcorp.txt", save=True, save_dir="src/resources", save_file="engcorpmonofreqs.txt")
+    # count_monograms_file("src/resources", "engcorp.txt", include_spaces=True, save=True, save_dir="src/resources", save_file="engcorpspacemonofreqs.txt")
     # print(load_monogram_count("src/resources", "engcorpspacemonofreqs.txt"))
+    print(count_monograms('''ЩЗЪЗЩЁЙИЬЪКЪЛМЯЖСМИЫХЬЙЯКЬХДЖЯЛЩРВЪЙЁЪМГМЦЯЖНКНЫЁЦГЕЪБЮХДЖЯЛЩРЙКГЫЪЬЁЩ
+МЦЕЯЭИБЪЁИЬЪЗГШЙИКНЫЁШЕКИЖЯМИЭИЩЮЪЬЪЁЯЖНЙИКНЫЁШЗЪСЪДЬЕЪБЮХДГВЮЬНЗЪЮЯЛЩ
+МХПЙКЪВЮЗГЕИЬЪЗЪЙЪЛПНЙИЮЪКГЁЯЖНЮЯЛЩМЦКНЫЁЯДЛЕИЁЦЕИЙИЁНСГЁИЗЬЭИЮ''', "alphabet",))

@@ -1,11 +1,13 @@
 import re
-from progress_bar import update_progress
+from src.resources.progress_bar import update_progress
 import os
 from math import log
+from src.resources.useful import construct_dict as dict_from_file
 
 MID_SEP = ":"
 END_SEP = ","
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+MIN_VALUE = 1/4745366
 
 def possible_tetragrams(dict_or_list:str, alphabet:str=ALPHABET):
     if dict_or_list == "dict":
@@ -70,6 +72,9 @@ def count_tetragrams(text:str, order_by_alphabet_or_frequency:str="alphabet", ca
         frequencies[text[i:i+4]] += 1
         update_progress(i,num_tets)
 
+    for key in frequencies.keys():
+        frequencies[key] /= num_tets
+
     if order_by_alphabet_or_frequency == "alphabet":
         frequencies = dict(sorted(frequencies.items(), key=lambda x:x[0].replace(" ", "_")))
     if order_by_alphabet_or_frequency == "frequency":
@@ -93,14 +98,46 @@ def count_tetragrams_file(directory:str, file:str, order_by_alphabet_or_frequenc
     else:
         return tetragram_dict
 
-def convert_frequency_to_log(freq:int, total_freq:int):
-    freq = max(freq, 1e-10)
+def convert_frequencies_to_log(freqs:list):
+    '''Calculates the log of the tetragram frequencies in a list and returns them'''
+    # total_freq = sum([int(freq) for freq in freqs])
+    log_freqs = []
 
+    for freq in freqs:
+        # log_freq = log(max(freq, 1e-10),total_freq)
+        log_freq = log(max(float(freq), MIN_VALUE))
+        log_freqs.append(log_freq)
+
+    return log_freqs
+
+def calc_log_frequencies_from_file(directory:str,file:str,save:bool=False,save_directory:str="",save_file:str=""):
+    '''returns or saves the table of logarithms of frequencies of tetragrams from a file of tetragram frequencies'''
+    with open(os.path.join(directory,file), "r") as f:
+        tetra_dict = dict_from_file(f.read(),MID_SEP,END_SEP)
+        tetra_log_dict = {}
+        log_freqs = convert_frequencies_to_log(tetra_dict.values())
+        for i, key in enumerate(tetra_dict.keys()):
+            tetra_log_dict[key] = log_freqs[i]
+
+    if save:
+        with open(os.path.join(save_directory,save_file), "w") as f:
+            for i, key in enumerate(tetra_log_dict.keys()):
+                if i < len(tetra_log_dict.keys()) - 1:
+                    f.write(f"{key}{MID_SEP}{tetra_log_dict[key]}{END_SEP}")
+                else:
+                    f.write(f"{key}{MID_SEP}{tetra_log_dict[key]}")
+
+    else:
+        return tetra_log_dict
+        
 
 if __name__ == "__main__":
     # print(count_tetragrams_file("src/resources", "engcorp.txt", "alphabet"))
     # print(count_tetragrams_file("src/resources", "engcorp.txt", "frequency"))
     # print(count_tetragrams_file("src/resources", "engcorp.txt", "alphabet", include_spaces=True))
     # print(count_tetragrams_file("src/resources", "engcorp.txt", "frequency", include_spaces=True))
-    count_tetragrams_file("src/resources", "engcorp.txt", "alphabet", save=True, save_dir="src/resources", save_file="engcorptetfreqs.txt")
-    count_tetragrams_file("src/resources", "engcorp.txt", "alphabet", include_spaces=True, save=True, save_dir="src/resources", save_file="engcorpspacetetfreqs.txt")
+    # count_tetragrams_file("src/resources", "engcorp.txt", "alphabet", save=True, save_dir="src/resources", save_file="engcorptetfreqs.txt")
+    # count_tetragrams_file("src/resources", "engcorp.txt", "alphabet", include_spaces=True, save=True, save_dir="src/resources", save_file="engcorpspacetetfreqs.txt")
+    calc_log_frequencies_from_file("src/resources", "engcorptetfreqs.txt",True,"src/resources","engcorptetlogfreqs.txt")
+    calc_log_frequencies_from_file("src/resources", "engcorpspacetetfreqs.txt",True,"src/resources","engcorpspacetetlogfreqs.txt")
+    pass

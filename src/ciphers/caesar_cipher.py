@@ -9,9 +9,9 @@ class Caesar(Cipher):
         # do init stuff
         super().__init__(settings)
 
-    def encode(self, plaintext, shift, settings=None):
+    def encode(self, plaintext:str, shift:int, settings:Settings=None):
         if not isinstance(settings, Settings):
-            settings = self.get_settings()
+            settings = self.settings
         if settings.tight:
             plaintext = filteranp(plaintext) # ALLOW FOR CUSTOMISATION
         plaintext_array = [char for char in plaintext]
@@ -32,9 +32,10 @@ class Caesar(Cipher):
 
     def decode(self, ciphertext, shift, settings=None):
         if not isinstance(settings, Settings):
-            settings = self.get_settings()
+            settings = self.settings
         if settings.tight:
-            ciphertext = filteranp(ciphertext) # ALLOW FOR CUSTOMISATION
+            # ciphertext = filteranp(ciphertext) # ALLOW FOR CUSTOMISATION
+            ciphertext = "".join([char for char in ciphertext if char in settings.alphabet])
         
         ciphertext_array = [char for char in ciphertext]
         plaintext_array = []
