@@ -18,7 +18,15 @@
         </div>
         <div class="content">
             <div id="main-section">
+
+            </div>
+            <div id="input-section">
                 
+                <form>
+                    <textarea id="corpus"></textarea><br>
+                    <p>Load From File: <input id="corpus-file" type="file" accept=".txt"></input></p>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
             <!-- <div id="input-section">
                 <form method="POST">
@@ -88,13 +96,12 @@
                     </div>
                     <input type="submit" value="Submit">
                 </form>
-            </div>
+            </div>-->
             <div class="section" id="results-section">
                 <h2>Result:</h2>
                 <p id="result-para">{{ result }}</p>
-            </div> -->
+            </div>
         </div>
-        <!-- <script src="{{ url_for('script', filename='settings-submenu.js')}}"></script>
-        <script src="{{ url_for('script', filename='form-persistence.js') }}"></script> -->
+        <script src="{{ url_for('js', filename='load-corpus.js') }}"></script>
     </body>
 </html>

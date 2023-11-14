@@ -114,10 +114,13 @@ def monoalphabetic_substitution_cipher():
         
     return render_template('/ciphers/monoalphabetic_substitution_cipher.html', result=result)
 
-@app.route('/tools/corpus-management', methods=['GET'])
+@app.route('/tools/corpus-management', methods=['GET', 'POST'])
 def corpus_management():
+    result = ""
+    if request.method == "POST":
+        corpus = request.form['corpus']
 
-    return render_template('/tools/corpus_management.html')
+    return render_template('/tools/corpus_management.html',result=result)
 
 @app.route('/static/js/<path:filename>')
 def js(filename):
