@@ -84,9 +84,18 @@ def monoalphabetic_substitution_cipher():
     result = ""
     if request.method == 'POST':
         
+        settings = Settings(alphabet=request.form.get('alphabet','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+                            tight=tight_T_F,
+                            alpha_numeric_punctuation=request.form.get('anp',"a"), 
+                            min_length=request.form.get('min_length',26), 
+                            max_length=request.form.get('max_length',26)
+                            )
+
+        cipher_obj = MonoalphabeticSubstitution(settings)
+
         text = request.form['text']
-        key_alphabet = request.form['key']
-        inverse_key = request.form['inverse-key']
+        key_alphabet = request.form.get('key',cipher_obj.invert_alphabet(request.form.get('inverse-key')))
+        inverse_key = request.form.get('inverse-key',cipher_obj.invert_alphabet(request.form.get('key')))
         operation = request.form['operation']
         tight_Y_N = request.form.get('tight', "Y")
         if tight_Y_N == "Y":
@@ -95,15 +104,6 @@ def monoalphabetic_substitution_cipher():
             tight_T_F = False
         else:
             raise ValueError("INVALID TIGHTNESS")
-
-        settings = Settings(alphabet=request.form.get('alphabet','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-                            tight=tight_T_F,
-                            alpha_numeric_punctuation=request.form.get('anp',"a"), 
-                            min_length=request.form.get('min_length',26), 
-                            max_length=request.form.get('max_length',26)
-                            )
-        
-        cipher_obj = MonoalphabeticSubstitution(settings)
 
         if operation == 'encode':
             result = cipher_obj.encode(text,key_alphabet, settings=settings)
@@ -119,6 +119,7 @@ def corpus_management():
     result = ""
     if request.method == "POST":
         corpus = request.form['corpus']
+        operation = request.form['operation']
 
     return render_template('/tools/corpus_management.html',result=result)
 

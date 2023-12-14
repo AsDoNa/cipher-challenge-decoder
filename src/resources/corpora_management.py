@@ -6,23 +6,27 @@ from src.resources.progress_bar import update_progress
 MID_SEP = ":"
 END_SEP = ","
 
-def load_corpora(save:bool=False, filename:str="", directory:str=""):
+def load_corpora(save:bool=False, filename:str="", directory:str="", corpus:str=""):
     '''Loads the brown corpus from online, returns or saves an uppercase punctuation-less version'''
 
-    brown_url = "http://www.sls.hawaii.edu/bley-vroman/brown.txt"
+    if len(corpus) != 0:
+        brown_url = "http://www.sls.hawaii.edu/bley-vroman/brown.txt"
 
-    response = requests.get(brown_url)
-    brown = response.text
+        response = requests.get(brown_url)
+        corp = response.text
+    else:
+        corp = corpus
 
-    brown_punctless = re.sub('[^A-Za-z0-9 \n]+', '', brown)
-    brown_punctless = re.sub(' +', ' ', brown_punctless)
-    brown_punctless_upper = brown_punctless.upper()
+
+    corp_punctless = re.sub('[^A-Za-z0-9 \n]+', '', corp)
+    corp_punctless = re.sub(' +', ' ', corp_punctless)
+    corp_punctless_upper = corp_punctless.upper()
 
     if save and len(filename) != 0 and len(directory) != 0:
         with open(os.path.join(directory, filename), "w",) as f:
-            f.write(brown_punctless_upper)
+            f.write(corp_punctless_upper)
     else:
-        return brown_punctless_upper
+        return corp_punctless_upper
 
 def find_unique_words(search_text:str, word_list:list=[]):
     '''Returns an alphabetically-sorted list of unique words in a text (assuming non-punctuation)'''
