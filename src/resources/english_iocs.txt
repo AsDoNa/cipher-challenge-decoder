@@ -1,0 +1,6 @@
+PrideAndPrejudice-ProjGut,Frankenstein-ProjGut,TheScarletLetter-ProjGut,Dracula-ProjGut,AlicesAdventuresInWonderland-ProjGut,Metamorphosis-ProjGut,JekyllAndHyde-ProjGut,AModestProposal-ProjGut,ATaleOfTwoCities-ProjGut
+1.70,1.71,1.74,1.71,1.73,1.74,1.70,1.69,1.71
+1.23,1.25,1.34,1.28,1.37,1.41,1.27,1.29,1.30
+1.70,1.71,1.74,1.71,1.73,1.74,1.70,1.69,1.71
+8.28,7.55,8.12,7.80,11.43,11.79,8.55,9.40,7.98
+45.20,37.36,40.24,37.24,71.73,74.19,44.59,56.86,38.46
