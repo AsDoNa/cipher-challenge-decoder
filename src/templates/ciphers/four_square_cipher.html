@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Four Square Cipher</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('css', filename='cipher_page.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <div class="navbar-item">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('image', filename='423483-200.png') }}" class="nav-img" id="home-button">
+                </a>
+            </div>
+            <h1 class="cipher-name-header">Four Square Cipher</h1>
+            <div class="navbar-item" id="settings-navbar-div">
+                <img src="{{ url_for('image', filename='814251-200.png') }}" class="nav-img submenu-closed" id="settings-button">
+            </div>
+        </div>
+        <div class="content">
+            <div id="input-section">
+                <form id="four-square-form" method="POST">
+                    <div class="section" id="form-section">
+                        <label for="text">Text:</label>
+                        <textarea name="text" id="text" rows="5" cols="40" required placeholder="Enter text here..."></textarea><br>
+                        <div class="grid_inputs">
+                            <div id="grid_tables">
+                                <table class="grid-table" id="grid-table-a">
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-1-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-1-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-1-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-1-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-1-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-2-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-2-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-2-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-2-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-2-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-3-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-3-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-3-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-3-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-3-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-4-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-4-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-4-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-4-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-4-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-5-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-5-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-5-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-5-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-a" id="grid-a-5-5"></td>
+                                    </tr>
+                                </table>
+                                <table class="grid-table" id="grid-table-b">
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-1-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-1-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-1-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-1-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-1-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-2-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-2-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-2-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-2-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-2-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-3-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-3-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-3-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-3-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-3-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-4-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-4-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-4-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-4-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-4-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-5-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-5-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-5-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-5-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-b" id="grid-b-5-5"></td>
+                                    </tr>
+                                </table><br>
+                                <table class="grid-table" id="grid-table-c">
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-1-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-1-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-1-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-1-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-1-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-2-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-2-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-2-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-2-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-2-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-3-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-3-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-3-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-3-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-3-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-4-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-4-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-4-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-4-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-4-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-5-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-5-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-5-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-5-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-c" id="grid-c-5-5"></td>
+                                    </tr>
+                                </table>
+                                <table class="grid-table" id="grid-table-d">
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-1-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-1-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-1-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-1-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-1-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-2-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-2-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-2-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-2-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-2-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-3-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-3-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-3-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-3-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-3-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-4-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-4-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-4-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-4-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-4-5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-5-1"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-5-2"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-5-3"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-5-4"></td>
+                                        <td><input type="text" class="grid-textbox grid-textbox-d" id="grid-d-5-5"></td>
+                                    </tr>
+                                </table>
+                            </div><br>
+                            <div id="grid_strings">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <label for="grid_a">Grid A:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="grid_a" id="grid_a" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="grid_b">Grid B:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="grid_b" id="grid_b" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="grid_c">Grid C:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="grid_c" id="grid_c" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>    
+                                            <label for="grid_d">Grid D:</label>
+                                        </td>    
+                                        <td>
+                                            <input type="text" name="grid_d" id="grid_d" required>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <label for="operation">Operation:</label>
+                        <select name="operation" id="operation">
+                            <option value="encode">Encode</option>
+                            <option value="decode">Decode</option>
+                            <option value="brute_decode">Brute Force Decode</option>
+                        </select><br>
+                    </div>
+                    <div id="settings-section" class="section">
+                        <h2 class="box-header">Settings</h2>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="alphabet">Alphabet:</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="alphabet" id="alphabet" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="anp">Alphabet, Numbers, Punctuation (anp):</label>
+                                </td>
+                                <td>
+                                    <select name="anp" id="anp">
+                                        <option value="a">Alphabet</option>
+                                        <option value="an">Alphabet & Numbers</option>
+                                        <option value="anp">Alphabet, Numbers & Punctuation</option>
+                                        <option value="ap">Alphabet & Punctuation</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="min_length">Minimum Alphabet Length:</label>
+                                </td>
+                                <td>
+                                    <input type="number" name="min_length" id="min_length" value=25>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="max_length">Maximum Alphabet Length:</label>
+                                </td>
+                                <td>
+                                    <input type="number" name="max_length" id="max_length" value=25>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="tight">Tightness</label>
+                                </td>
+                                <td>
+                                    <select name="tight" id="tight">
+                                        <option value="Y">Filter out punctuation</option>
+                                        <option value="N">Ignore (keep) punctuation</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="section" id="results-section">
+                <h2>Result:</h2>
+                <p id="result-para">{{ result }}</p>
+                <table id="brute-force-table"></table>
+            </div>
+        </div>
+        <script src="{{ url_for('js', filename='settings-submenu.js')}}"></script>
+        <script src="{{ url_for('js', filename='form-persistence.js') }}"></script>
+        <script src="{{ url_for('js', filename='grid-table-textbox-consistency.js') }}"></script>
+        <script src="{{ url_for('js', filename='handle-four-square-brute-force-request.js') }}"></script>
+    </body>
+</html>

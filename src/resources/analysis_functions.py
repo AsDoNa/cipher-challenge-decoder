@@ -1,6 +1,6 @@
-from src.resources.useful import strip_to_alphabet, calculate_nonoverlapping_ngrams
-from src.resources.chi_squared import chi_squared
-from src.resources.monogram_frequencies import count_monograms
+from resources.useful import strip_to_alphabet, calculate_nonoverlapping_ngrams
+from resources.chi_squared import chi_squared
+from resources.monogram_frequencies import count_monograms
 from statistics import mean
 import os
 from math import log

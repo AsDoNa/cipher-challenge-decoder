@@ -1,4 +1,4 @@
-from src.ciphers.objects import Settings
+from ciphers.objects import Settings
 
 MIN_LENGTH = 26 # UPDATE TO WORK WITH IMPORTED CONSTS
 MAX_LENGTH = 26 # UPDATE TO WORK WITH IMPORTED CONSTS

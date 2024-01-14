@@ -1,5 +1,6 @@
 from math import sqrt
-from src.resources.progress_bar import update_progress
+from resources.progress_bar import update_progress
+# from progress_bar import update_progress
 
 def construct_dict(text:str, mid_sep:str, end_sep:str):
     text_arr = text.split(end_sep)
@@ -87,6 +88,20 @@ def calculate_nonoverlapping_ngrams(text:str,n:int,alphabet:str,generate_ngrams:
     possible_ngrams = dict(sorted(possible_ngrams.items(), key=lambda x:x[0].replace(" ", "_")))
 
     return possible_ngrams
+
+def string_to_square_matrix(string:str, mat_size:int):
+    if (len(string)!=mat_size**2):
+        raise ValueError(f"String ({string}) must be length {mat_size**2}, not {len(string)}")
+    
+    matrix = []
+    for i in range(mat_size):
+        row = []
+        for j in range(mat_size):
+            index = i * mat_size + j
+            row.append(string[index])
+        matrix.append(row)
+
+    return matrix
 
 if __name__ == '__main__':
     # calculate_nonoverlapping_ngrams("IUGHEFWUGIGBWEBIGEWUOGBOUEWBFOUWEBROUFBNWEOFBOUWEBFVOUEWBNVOUWENVOIJMREDOINOUBNGIUOBIUREOGBIOUREBNGIOUERNGOJENROUVBEIORUJBNVERVBERIUVBEIRUBVREIOUWBVOUEWQBNOUEWRNVOIENROIVNMIOWERMVOIEWNVOINEWOUVBEOUWINVIUBWEOUVBEWIUOBVIUEWVIUEWBVIUBWEIUBV",3,"ABCDEFGHIJKLMNOPQRSTUVWXYZ ")

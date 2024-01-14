@@ -6,12 +6,17 @@ function saveInputs() {
     const shiftLengthInput = document.getElementById('shift_length');
     const keyInput = document.getElementById('key');
     const inverseKeyInput = document.getElementById('inverse-key');
+    const gridAInput = document.getElementById('grid_a');
+    const gridBInput = document.getElementById('grid_b');
+    const gridCInput = document.getElementById('grid_c');
+    const gridDInput = document.getElementById('grid_d');
     const operationInput = document.getElementById('operation');
     const alphabetInput = document.getElementById('alphabet');
     const anpInput = document.getElementById('anp');
     const minLengthInput = document.getElementById('min_length');
     const maxLengthInput = document.getElementById('max_length');
     const tightInput = document.getElementById('tight');
+    const corpusInput = document.getElementById('corpus');
     console.log("ELEMENTS GOT!")
 
     // Save input values to Local Storage
@@ -37,6 +42,26 @@ function saveInputs() {
     }
     try {
         localStorage.setItem('inverse-key', inverseKeyInput.value);
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        localStorage.setItem('grid_a', gridAInput.value);
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        localStorage.setItem('grid_b', gridBInput.value);
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        localStorage.setItem('grid_c', gridCInput.value);
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        localStorage.setItem('grid_d', gridDInput.value);
     } catch (err) {
         console.log("ERROR: " + err);
     }
@@ -70,6 +95,11 @@ function saveInputs() {
     } catch (err) {
         console.log("ERROR: " + err);
     }
+    try {
+        localStorage.setItem('corpus', corpusInput.value);
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
     console.log("LOCAL STORAGE SET");
 }
 
@@ -80,12 +110,17 @@ function loadInputs() {
     const shiftLengthInput = document.getElementById('shift_length');
     const keyInput = document.getElementById('key');
     const inverseKeyInput = document.getElementById('inverse-key');
+    const gridAInput = document.getElementById('grid_a');
+    const gridBInput = document.getElementById('grid_b');
+    const gridCInput = document.getElementById('grid_c');
+    const gridDInput = document.getElementById('grid_d');
     const operationInput = document.getElementById('operation');
     const alphabetInput = document.getElementById('alphabet');
     const anpInput = document.getElementById('anp');
     const minLengthInput = document.getElementById('min_length');
     const maxLengthInput = document.getElementById('max_length');
     const tightInput = document.getElementById('tight');
+    const corpusInput = document.getElementById('corpus');
     console.log("ELEMENTS GOT!")
 
     console.log(localStorage);
@@ -117,6 +152,26 @@ function loadInputs() {
         console.log("ERROR: " + err);
     }
     try {
+        gridAInput.value = localStorage.getItem('grid_a') || '';
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        gridBInput.value = localStorage.getItem('grid_b') || '';
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        gridCInput.value = localStorage.getItem('grid_c') || '';
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        gridDInput.value = localStorage.getItem('grid_d') || '';
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
         operationInput.value = localStorage.getItem('operation') || 'encode';
     } catch (err) {
         console.log("ERROR: " + err);
@@ -143,6 +198,11 @@ function loadInputs() {
     }
     try {
         tightInput.value = localStorage.getItem('tight') || 'Y';
+    } catch (err) {
+        console.log("ERROR: " + err);
+    }
+    try {
+        corpusInput.value = localStorage.getItem('corpus') || '';
     } catch (err) {
         console.log("ERROR: " + err);
     }

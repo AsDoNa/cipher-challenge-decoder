@@ -1,6 +1,6 @@
-from src.resources.analysis_functions import index_of_coincidence
-from src.resources.monogram_frequencies import load_monogram_count, count_monograms
-from src.resources.fitness import check_monograms_angle_vectors
+from resources.analysis_functions import index_of_coincidence
+from resources.monogram_frequencies import load_monogram_count, count_monograms
+from resources.fitness import check_monograms_angle_vectors
 # from resources.chi_squared import chi_squared
 
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

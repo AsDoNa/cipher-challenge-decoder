@@ -1,7 +1,11 @@
-from src.resources.monogram_frequencies import load_monogram_count,count_monograms
-from src.resources.tetragam_frequencies import count_tetragrams
-from src.resources.chi_squared import chi_squared
-from src.resources.useful import cos_angle_between_vectors, construct_dict
+from resources.monogram_frequencies import load_monogram_count,count_monograms
+from resources.tetragam_frequencies import count_tetragrams
+from resources.chi_squared import chi_squared
+from resources.useful import cos_angle_between_vectors, construct_dict
+# from monogram_frequencies import load_monogram_count,count_monograms
+# from tetragam_frequencies import count_tetragrams
+# from chi_squared import chi_squared
+# from useful import cos_angle_between_vectors, construct_dict
 import os
 import re
 

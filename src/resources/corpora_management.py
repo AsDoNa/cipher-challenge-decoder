@@ -1,7 +1,7 @@
 import requests
 import re
 import os
-from src.resources.progress_bar import update_progress
+from resources.progress_bar import update_progress
 
 MID_SEP = ":"
 END_SEP = ","

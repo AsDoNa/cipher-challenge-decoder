@@ -1,5 +1,6 @@
 import re
-from src.resources.progress_bar import update_progress
+from resources.progress_bar import update_progress
+# from progress_bar import update_progress
 import os
 
 MID_SEP = ":"

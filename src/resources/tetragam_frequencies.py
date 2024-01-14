@@ -1,8 +1,10 @@
 import re
-from src.resources.progress_bar import update_progress
+from resources.progress_bar import update_progress
+from resources.useful import construct_dict as dict_from_file
+# from progress_bar import update_progress
+# from useful import construct_dict as dict_from_file
 import os
 from math import log
-from src.resources.useful import construct_dict as dict_from_file
 
 MID_SEP = ":"
 END_SEP = ","

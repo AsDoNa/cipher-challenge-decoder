@@ -1,6 +1,6 @@
-from src.ciphers.cipher import Cipher
-from src.ciphers.objects import Settings
-from src.ciphers.useful import filter as filteranp
+from ciphers.cipher import Cipher
+from ciphers.objects import Settings
+from ciphers.useful import filter as filteranp
 
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

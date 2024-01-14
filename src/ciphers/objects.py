@@ -1,4 +1,4 @@
-from src.resources.consts import ACCEPTABLEALPHANUMPUNC,ALPHABET,TIGHT,ALPHANUMPUNC,MINLENGTH,MAXLENGTH
+from resources.consts import ACCEPTABLEALPHANUMPUNC,ALPHABET,TIGHT,ALPHANUMPUNC,MINLENGTH,MAXLENGTH
 
 class Settings():
     def __init__(self, alphabet:str=None, tight:bool=None, alpha_numeric_punctuation:str=None, min_length:int=None, max_length:int=None):
